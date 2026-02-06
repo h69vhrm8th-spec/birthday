@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Arial', sans-serif;
+  }
+
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  h1 {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 0 0 20px #fff, 0 0 40px #ffb3ff, 0 0 60px #ff66ff;
+    animation: glow 1.5s ease-in-out infinite alternate;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+  }
+
+  @keyframes glow {
+    from {text-shadow: 0 0 10px #fff, 0 0 20px #ffb3ff, 0 0 30px #ff66ff;}
+    to {text-shadow: 0 0 20px #fff, 0 0 40px #ffb3ff, 0 0 60px #ff66ff;}
+  }
+
+  .emoji {
+    position: absolute;
+    font-size: 2rem;
+    pointer-events: none;
+    animation-name: floatUp;
+    animation-timing-function: linear;
+  }
+
+  @keyframes floatUp {
+    0% {transform: translateY(100vh) rotate(0deg);}
+    100% {transform: translateY(-10vh) rotate(360deg);}
+  }
+</style>
+</head>
+<body>
+
+<h1>🎉 "Happy Birthday, Engineer! May the days ahead be full of happiness and may all your wishes come true.”🎂</h1>
+
+<script>
+  const emojis = ['🎉','✨','🎊','💖','🌟'];
+  
+  function createEmoji(){
+    const emoji = document.createElement('div');
+    emoji.classList.add('emoji');
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random()*100 + 'vw';
+    emoji.style.fontSize = (Math.random()*30 + 20) + 'px';
+    emoji.style.animationDuration = (Math.random()*3 + 3) + 's';
+    document.body.appendChild(emoji);
+    
+    setTimeout(()=>{
+      emoji.remove(); // يشيل الإيموجي بعد ما يخلص الحركة
+    }, 6000);
+  }
+
+  // نطلع إيموجي كل 200ms تقريبًا
+  setInterval(createEmoji, 200);
+</script>
+
+</body>
+</html>
